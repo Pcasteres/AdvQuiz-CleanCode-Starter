@@ -88,18 +88,20 @@ public class CheatPresenter implements CheatContract.Presenter {
     //TODO: falta implementacion
     //option=1 => yes, option=0 => no
 
+
   }
 
   private void passStateToQuestionScreen(CheatToQuestionState state) {
 
     //TODO: falta implementacion
+    mediator.setCheatToQuestionState(state);
   }
 
   private QuestionToCheatState getStateFromQuestionScreen() {
 
     //TODO: falta implementacion
 
-    return null;
+    return mediator.getQuestionToCheatState();
   }
 
   @Override

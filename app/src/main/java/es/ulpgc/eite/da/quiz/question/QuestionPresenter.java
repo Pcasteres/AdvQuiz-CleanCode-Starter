@@ -49,7 +49,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onRestart()");
 
     //TODO: falta implementacion
-    
 
   }
 
@@ -63,7 +62,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     // use passed state if is necessary
     CheatToQuestionState savedState = getStateFromCheatScreen();
     if (savedState != null) {
-
+        //TODO
+      // state.quizIndex = savedState.answerCheated;
       // fetch the model
     }
 
@@ -97,20 +97,20 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onNextButtonClicked()");
     //TODO: falta implementacion
 
+
   }
 
   @Override
   public void onCheatButtonClicked() {
     Log.e(TAG, "onCheatButtonClicked()");
     //TODO: falta implementacion
-    QuestionToCheatState newState = new QuestionToCheatState(state.quizIndex;
+    QuestionToCheatState newState = new QuestionToCheatState(state.quizIndex);
     passStateToCheatScreen(newState);
     view.get().navigateToCheatScreen();
 
   }
 
   private void passStateToCheatScreen(QuestionToCheatState state) {
-
     //TODO: falta implementacion
     mediator.setQuestionToCheatState(state);
 
@@ -118,9 +118,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   }
 
   private CheatToQuestionState getStateFromCheatScreen() {
-
     //TODO: falta implementacion
-
     return mediator.getCheatToQuestionState();
   }
 
