@@ -82,13 +82,16 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onOptionButtonClicked()");
 
     //TODO: falta implementacion
-
+    if(model.getQuizIndex() == 1){
+         model.getAnswer();
+    }
     boolean isCorrect = model.isCorrectOption(option);
     if(isCorrect) {
       state.cheatEnabled=false;
     } else {
       state.cheatEnabled=true;
     }
+    enableNextButton();
 
   }
 
@@ -96,7 +99,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   public void onNextButtonClicked() {
     Log.e(TAG, "onNextButtonClicked()");
     //TODO: falta implementacion
-
+    enableNextButton();
+    state.quizIndex++;
+    //model.getQuestion(state.quizIndex);
 
   }
 
