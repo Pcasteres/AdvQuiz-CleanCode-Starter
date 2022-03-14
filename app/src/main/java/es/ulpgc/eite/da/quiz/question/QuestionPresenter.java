@@ -82,26 +82,46 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onOptionButtonClicked()");
 
     //TODO: falta implementacion
-    if(model.getQuizIndex() == 1){
-         model.getAnswer();
-    }
     boolean isCorrect = model.isCorrectOption(option);
+    if(option == 1){
+      state.option = 1;
+    }else if(option == 2){
+      state.option = 2;
+
+    }else{
+      state.option = 3;
+    }
     if(isCorrect) {
       state.cheatEnabled=false;
+      state.optionEnabled = false;
+      state.nextEnabled = true;
     } else {
       state.cheatEnabled=true;
+      state.optionEnabled = true;
+      state.nextEnabled = false;
     }
-    enableNextButton();
-
+    this.enableNextButton();
+    view.get().displayQuestion(state);
+    //Hay que actualizar la respuesta
+    //en base a si es correcta o incorrecta
+    view.get().updateReply(isCorrect);
   }
 
   @Override
   public void onNextButtonClicked() {
     Log.e(TAG, "onNextButtonClicked()");
     //TODO: falta implementacion
-    enableNextButton();
-    state.quizIndex++;
-    //model.getQuestion(state.quizIndex);
+    model.updateQuizIndex();
+    state.quizIndex = model.getQuizIndex();
+    state.option1 = model.getOption1();
+    state.option2 = model.getOption2();
+    state.option3 = model.getOption3();
+
+    state.optionClicked = false;
+    view.get().resetReply();
+    disableNextButton();
+    view.get().displayQuestion(state);
+
 
   }
 
