@@ -111,8 +111,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   public void onNextButtonClicked() {
     Log.e(TAG, "onNextButtonClicked()");
     //TODO: falta implementacion
+    //Actualizo el índice
     model.updateQuizIndex();
-    state.quizIndex = model.getQuizIndex();
+    //Cojo la pregunta correspondiente con sus respuestas
+    state.question = model.getQuestion();
     state.option1 = model.getOption1();
     state.option2 = model.getOption2();
     state.option3 = model.getOption3();
@@ -121,7 +123,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     view.get().resetReply();
     disableNextButton();
     view.get().displayQuestion(state);
-
 
   }
 
