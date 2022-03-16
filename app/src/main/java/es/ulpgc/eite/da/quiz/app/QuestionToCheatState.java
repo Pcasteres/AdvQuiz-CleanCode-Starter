@@ -4,7 +4,7 @@ public class QuestionToCheatState {
 
   public String answer;
 
-  public QuestionToCheatState(int quizIndex) {
+  public QuestionToCheatState(String answer) {
     this.answer = answer;
   }
 }

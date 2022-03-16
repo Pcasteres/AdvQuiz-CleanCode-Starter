@@ -52,21 +52,19 @@ public class CheatPresenter implements CheatContract.Presenter {
     Log.e(TAG, "onResume()");
 
     //TODO: falta implementacion
-
     // use passed state if is necessary
     QuestionToCheatState savedState = getStateFromQuestionScreen();
     if (savedState != null) {
+      model.setAnswer(savedState.answer);
 
       // fetch the model
-
-      // update the state
-
     }
-
-    // update the view
+    // update the state
     view.get().displayAnswer(state);
 
   }
+
+  // update the view
 
   @Override
   public void onDestroy() {
@@ -78,16 +76,24 @@ public class CheatPresenter implements CheatContract.Presenter {
     Log.e(TAG, "onBackPressed()");
 
     //TODO: falta implementacion
-
+    CheatToQuestionState newState = new CheatToQuestionState(state.answerCheated);
+    passStateToQuestionScreen(newState);
+    view.get().onFinish();
   }
 
   @Override
   public void onWarningButtonClicked(int option) {
     Log.e(TAG, "onWarningButtonClicked()");
-
     //TODO: falta implementacion
     //option=1 => yes, option=0 => no
-
+    if(option == 1){
+      state.answerCheated = true;
+      state.answerEnabled = false;
+      state.answer = model.getAnswer();
+      view.get().displayAnswer(state);
+    }else{
+      view.get().onFinish();
+    }
 
   }
 
