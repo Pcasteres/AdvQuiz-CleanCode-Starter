@@ -44,7 +44,8 @@ public class CheatPresenter implements CheatContract.Presenter {
   public void onRestart() {
     Log.e(TAG, "onRestart()");
 
-    //TODO: falta implementacion
+    //TODO: falta implementacion no entiendo
+
 
   }
 

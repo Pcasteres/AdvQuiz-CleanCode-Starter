@@ -47,9 +47,24 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   @Override
   public void onRestart() {
     Log.e(TAG, "onRestart()");
-
     //TODO: falta implementacion
-
+    //Este método se ejecuta cuando hacemos
+    // giro de pantalla,
+    // después del onDestroy, por lo que es el que guarda
+    //el estado
+    //Si se ha pulsado en una opción
+    if(state.optionClicked){
+      //y la opción escogida es correcta
+      if(model.isCorrectOption(state.option)){
+        //La respuesta se actualiza y se mantiene en correcta
+        view.get().updateReply(true);
+      }else{
+        view.get().updateReply(false);
+      } //si no pulsamos en ninguna opción debería quedarse vacía
+      //por lo que llamamos al resetReply
+    }else{
+      view.get().resetReply();
+    }
   }
 
 
@@ -66,13 +81,11 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         if(model.hasQuizFinished()){
           state.optionEnabled = false;
           state.nextEnabled = false;
-          state.cheatEnabled = false;
         }else{
           onNextButtonClicked();
         }
 
       }
-      // state.quizIndex = savedState.answerCheated;
       // fetch the model
     }
 
@@ -100,20 +113,22 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     }else{
       state.option = 3;
     }
+
     if(isCorrect) {
       state.cheatEnabled=false;
       state.optionEnabled = false;
-      state.nextEnabled = true;
+      state.answerCheated = true;
     } else {
       state.cheatEnabled=true;
-      state.optionEnabled = true;
-      state.nextEnabled = false;
+      state.optionEnabled = false;
+      state.answerCheated = true;
     }
     this.enableNextButton();
-    view.get().displayQuestion(state);
     //Hay que actualizar la respuesta
     //en base a si es correcta o incorrecta
     view.get().updateReply(isCorrect);
+    view.get().displayQuestion(state);
+
   }
 
   @Override
