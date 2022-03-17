@@ -45,6 +45,7 @@ public class CheatPresenter implements CheatContract.Presenter {
     Log.e(TAG, "onRestart()");
 
     //TODO: falta implementacion
+
   }
 
   @Override
@@ -98,7 +99,6 @@ public class CheatPresenter implements CheatContract.Presenter {
   }
 
   private void passStateToQuestionScreen(CheatToQuestionState state) {
-
     //TODO: falta implementacion
     mediator.setCheatToQuestionState(state);
   }

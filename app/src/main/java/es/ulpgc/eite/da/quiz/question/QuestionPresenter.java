@@ -62,7 +62,18 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     // use passed state if is necessary
     CheatToQuestionState savedState = getStateFromCheatScreen();
     if (savedState != null) {
+      state.answerCheated = savedState.answerCheated;
         //TODO
+      if(state.answerCheated){
+        if(model.hasQuizFinished()){
+          state.optionEnabled = false;
+          state.nextEnabled = false;
+          state.cheatEnabled = false;
+        }else{
+          onNextButtonClicked();
+        }
+
+      }
       // state.quizIndex = savedState.answerCheated;
       // fetch the model
     }
