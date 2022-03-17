@@ -56,9 +56,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   @Override
   public void onResume() {
     Log.e(TAG, "onResume()");
-
     //TODO: falta implementacion
-
     // use passed state if is necessary
     CheatToQuestionState savedState = getStateFromCheatScreen();
     if (savedState != null) {
