@@ -102,30 +102,23 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onOptionButtonClicked()");
 
     //TODO: falta implementacion
+    state.optionClicked = true;
     boolean isCorrect = model.isCorrectOption(option);
     if(option == 1){
       state.option = 1;
     }else if(option == 2){
       state.option = 2;
-
     }else{
       state.option = 3;
     }
-    //No importa si has contestado correcta o incorrectamente
-    //Los botones se desactivan igualmente
-    /*if(isCorrect) {
+    //El único botón que depende de si ha respondido
+    //correcta o incorrectamente es el Cheat
+    if(isCorrect) {
       state.cheatEnabled=false;
-      state.optionEnabled = false;
-      state.answerCheated = true;
     } else {
       state.cheatEnabled=true;
-      state.optionEnabled = false;
-      state.answerCheated = true;
-    }*/
-
-      state.optionClicked = true;
+    }
       this.enableNextButton();
-      state.cheatEnabled =false;
     //Hay que actualizar la respuesta
     //en base a si es correcta o incorrecta
     view.get().updateReply(isCorrect);
