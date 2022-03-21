@@ -122,8 +122,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
       state.optionEnabled = false;
       state.answerCheated = true;
     }*/
-    state.optionClicked = true;
-    this.enableNextButton();
+
+      state.optionClicked = true;
+      this.enableNextButton();
+      state.cheatEnabled =false;
     //Hay que actualizar la respuesta
     //en base a si es correcta o incorrecta
     view.get().updateReply(isCorrect);
