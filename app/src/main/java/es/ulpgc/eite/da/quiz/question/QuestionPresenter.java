@@ -76,7 +76,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     CheatToQuestionState savedState = getStateFromCheatScreen();
     if (savedState != null) {
       state.answerCheated = savedState.answerCheated;
-        //TODO
       if(state.answerCheated){
         if(model.hasQuizFinished()){
           state.optionEnabled = false;
@@ -88,7 +87,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
       }
       // fetch the model
     }
-
     // update the view
     view.get().displayQuestion(state);
   }
@@ -113,8 +111,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     }else{
       state.option = 3;
     }
-
-    if(isCorrect) {
+    //No importa si has contestado correcta o incorrectamente
+    //Los botones se desactivan igualmente
+    /*if(isCorrect) {
       state.cheatEnabled=false;
       state.optionEnabled = false;
       state.answerCheated = true;
@@ -122,7 +121,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
       state.cheatEnabled=true;
       state.optionEnabled = false;
       state.answerCheated = true;
-    }
+    }*/
     state.optionClicked = true;
     this.enableNextButton();
     //Hay que actualizar la respuesta
@@ -150,7 +149,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     view.get().displayQuestion(state);
 
   }
-
   @Override
   public void onCheatButtonClicked() {
     Log.e(TAG, "onCheatButtonClicked()");
@@ -183,6 +181,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   private void enableNextButton() {
     state.optionEnabled=false;
+    state.cheatEnabled = false;
 
     if(!model.hasQuizFinished()) {
       state.nextEnabled=true;
