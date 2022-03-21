@@ -181,7 +181,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   private void enableNextButton() {
     state.optionEnabled=false;
-    state.cheatEnabled = false;
+    //state.cheatEnabled = false;
 
     if(!model.hasQuizFinished()) {
       state.nextEnabled=true;

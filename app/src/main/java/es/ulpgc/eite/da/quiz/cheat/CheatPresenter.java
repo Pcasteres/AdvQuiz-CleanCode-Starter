@@ -34,8 +34,7 @@ public class CheatPresenter implements CheatContract.Presenter {
     // reset state to tests
     state.answerEnabled=true;
     state.answerCheated=false;
-    state.answer = null;
-
+    state.answer = "???";
     // update the view
     view.get().resetAnswer();
   }
@@ -43,10 +42,14 @@ public class CheatPresenter implements CheatContract.Presenter {
   @Override
   public void onRestart() {
     Log.e(TAG, "onRestart()");
-
-    //TODO: falta implementacion no entiendo
-
-
+    //Si la respuesta está en pantalla
+    //presentala
+    //TODO: falta implementacion
+    if(state.answerCheated) {
+      view.get().displayAnswer(state);
+    }else{
+      view.get().resetAnswer();
+    }
   }
 
   @Override
@@ -62,7 +65,7 @@ public class CheatPresenter implements CheatContract.Presenter {
       // fetch the model
     }
     // update the state
-    view.get().displayAnswer(state);
+    //view.get().displayAnswer(state);
 
   }
 
