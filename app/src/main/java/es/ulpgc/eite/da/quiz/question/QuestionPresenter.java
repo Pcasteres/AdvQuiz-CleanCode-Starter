@@ -48,6 +48,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   public void onRestart() {
     Log.e(TAG, "onRestart()");
     //TODO: falta implementacion
+    //Hay que actualizar el índice!!
+    model.setQuizIndex(state.quizIndex);
     //Este método se ejecuta cuando hacemos
     // giro de pantalla,
     // después del onDestroy, por lo que es el que guarda
